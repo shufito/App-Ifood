@@ -8,7 +8,7 @@ interface Props {
 
 export function Section({ name, size, label, action }: Props) {
   return (
-    <View className="w-full flex flex-row items-center justify-between px-4">
+    <View className="w-full flex flex-row items-center justify-between">
       <Text className={`${size} my-4 font-bold`}>{name}</Text>
       <Pressable onPress={action}>
         <Text>{label}</Text>

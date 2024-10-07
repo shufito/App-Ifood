@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { FlatList } from "react-native";
-import { Restaurant } from "./restaurantItem";
+import { View } from "react-native";
+import { ItemRestaurant } from "./item";
 
 export interface RestaurantsProps {
   id: string;
@@ -8,7 +8,7 @@ export interface RestaurantsProps {
   image: string;
 }
 
-export function Restaurants() {
+export function ListRestaurant() {
   const [restauranst, setRestauranst] = useState<RestaurantsProps[]>([]);
 
   useEffect(() => {
@@ -20,12 +20,10 @@ export function Restaurants() {
     getRestauranst();
   }, []);
   return (
-    <FlatList
-      data={restauranst}
-      renderItem={({ item }) => <Restaurant data={item} />}
-      contentContainerStyle={{ gap: 14 }}
-      showsHorizontalScrollIndicator={false}
-      horizontal={true}
-    />
+    <View className="flex-1 w-ful h-full gap-4 mb-11">
+      {restauranst.map((item) => (
+        <ItemRestaurant data={item} key={item.id} />
+      ))}
+    </View>
   );
 }
